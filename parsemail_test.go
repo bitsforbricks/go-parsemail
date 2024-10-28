@@ -466,6 +466,39 @@ So, "Hello".`,
 				},
 			},
 		},
+		16: {
+			mailData: `From: John Doe <jdoe@machine.example>
+Sender: Michael Jones <mjones@machine.example>
+To: Mary Smith <mary@example.net>
+Subject: Saying Hello
+Date: 22 Nov 1997 09:55:06 -0600
+Message-ID: <1234@local.machine.example>
+
+This is a message just to say hello.
+So, "Hello".
+`,
+			subject:  "Saying Hello",
+			from: []mail.Address{
+				{
+					Name:    "John Doe",
+					Address: "jdoe@machine.example",
+				},
+			},
+			to: []mail.Address{
+				{
+					Name:    "Mary Smith",
+					Address: "mary@example.net",
+				},
+			},
+			sender: mail.Address{
+				Name:    "Michael Jones",
+				Address: "mjones@machine.example",
+			},
+			messageID: "1234@local.machine.example",
+			date:      parseDate("Fri, 22 Nov 1997 09:55:06 -0600"),
+			textBody: `This is a message just to say hello.
+So, "Hello".`,
+		},
 	}
 
 	for index, td := range testData {
